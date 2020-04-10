@@ -54,11 +54,9 @@ app.post("/repositories/:id/like", (request, response) => {
     response.status(400).json({message : "Couldn't find the repository"});
   }
   else{
-    const {title,url,likes}=repositories[repoIndex];
-    console.log("Atual " + likes + " - "+typeof(likes));
+    const {title,url,techs,likes}=repositories[repoIndex];
     let newlikes=parseInt(likes+1);
-    console.log("novo " + newlikes + " - "+typeof(likes));
-    const updatedRepo={id,title,url,likes:newlikes};
+    const updatedRepo={id,title,url,techs,likes:newlikes};
     repositories[repoIndex]=updatedRepo;
     response.json(updatedRepo);
   }
